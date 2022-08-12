@@ -21,6 +21,9 @@ public class NewsService {
    //@Value("${CRYPTO_API_KEY")
     //private String apiKey;
 
+    //logger.info("why doesnt show");
+
+
 
     //add arraylist into the get Articles??
     public Optional <Articles> getArticles(){

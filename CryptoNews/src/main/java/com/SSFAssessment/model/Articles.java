@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -94,15 +95,27 @@ public class Articles {
     }
 
 
-    public static Articles create(String json) throws IOException{
+    public static Articles create(String jsonlist) throws IOException{
         Articles a = new Articles();
-        try(InputStream is = new ByteArrayInputStream(json.getBytes())) {
+        try(InputStream is = new ByteArrayInputStream(jsonlist.getBytes())) {
             JsonReader r = Json.createReader(is);
             JsonObject o = r.readObject();
             //logger.info(o.toString());
 
-            JsonArray articlelist = o.getJsonArray("id");
-           // logger.info(articlelist.getString(1));
+            // logger.info(articlelist.getString(1));
+
+           /*
+           JsonArray articlelist = o.getJsonArray("id");
+           List<Articles> list = new ArrayList()<>();
+
+           for (int i=0; i<articlelist.size(); i++){
+            JsonObject jsonList = Articles.getString(id);
+
+            getArticlesList.addAll(Articles.create(jsonlist)));
+
+           }
+
+           */
 
             //for(int i=1; i>=1; i++){
               //  JsonObject o = r.
@@ -112,8 +125,8 @@ public class Articles {
 
 
             //cont with instantiating new object 
-            
-           /*  a.id = o.getString(id);
+            /* 
+            a.id = o.getString(id);
             a.published_on = o.getString(published_on);
             a.title = o.getString(title);
             a.url = o.getString(url);
@@ -124,18 +137,25 @@ public class Articles {
         
 
 
-            getArticlesList.add(a);
+            //getArticlesList.add(a);
 
 
-            for (i=1; i>=1; i++){
-                getArticlesList.add(a);
-
-
+            for (int i=1; i>=1; i++){
+                getArticlesList.add(a.id);
+                getArticlesList.add(published_on);
+                getArticlesList.add(a.title);
+                getArticlesList.add(a.url);
+                getArticlesList.add(a.imageurl);
+                getArticlesList.add(a.body);
+                getArticlesList.add(a.tags);
+                getArticlesList.add(a.categories);
             }
 
             */
 
         }
+
+        
         return a;
 
         

@@ -18,8 +18,10 @@
         method = "get"
         >
 
-        <input type="save" />
-    
+        <div class="container">
+            <p data-th-text="${Articles.getArticlesList}"></p>
+            <input type="checkbox" id="save" name="save" value="save">
+            <label for="save"> Save </label>    
         </form>
 
         <

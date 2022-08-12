@@ -1,5 +1,7 @@
 package com.SSFAssessment.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,16 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class NewsController {
 
-   @GetMapping
-    //public String getArticles(@RequestParam(required = true) String articles){
-
+   //@GetMapping
+    //public String getArticles(@RequestP   aram(required = true) String articles){
+    //public String getArticles(Model model){
+      //  ArrayList getArticlesList = new ArrayList<>();
+    //}
 
     //}
 
-    @PostMapping ("/articles")
-    public String saveArticles(){
-        return "saveArticle";
-    }
+    //@PostMapping ("/")
+   // public String saveArticles(Model model){
+     //   return "index";
+    //}
 
 
 

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
@@ -93,19 +94,26 @@ public class Articles {
     }
 
 
-    public static Articles create(List json) throws IOException{
+    public static Articles create(String json) throws IOException{
         Articles a = new Articles();
         try(InputStream is = new ByteArrayInputStream(json.getBytes())) {
             JsonReader r = Json.createReader(is);
             JsonObject o = r.readObject();
-            logger.info(o.toString());
+            //logger.info(o.toString());
+
+            JsonArray articlelist = o.getJsonArray("id");
+           // logger.info(articlelist.getString(1));
+
+            //for(int i=1; i>=1; i++){
+              //  JsonObject o = r.
+            //}
             
 
 
 
             //cont with instantiating new object 
             
-            a.id = o.getString(id);
+           /*  a.id = o.getString(id);
             a.published_on = o.getString(published_on);
             a.title = o.getString(title);
             a.url = o.getString(url);
@@ -125,7 +133,12 @@ public class Articles {
 
             }
 
+            */
+
         }
+        return a;
+
+        
     }
 
 

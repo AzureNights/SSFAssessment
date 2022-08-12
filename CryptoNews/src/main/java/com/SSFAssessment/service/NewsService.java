@@ -33,11 +33,11 @@ public class NewsService {
     logger.info("Check URL" + cryptoUrl);
 
     RestTemplate template = new RestTemplate();
-    ResponseEntity<ArrayList> resp = null;
+    ResponseEntity<String> resp = null;
     //should this be array 
 
     try{
-        resp = template.getForEntity(cryptoUrl, ArrayList.class);
+        resp = template.getForEntity(cryptoUrl, String.class);
         Articles a = Articles.create(resp.getBody());
         return Optional.of(a);
     } catch (Exception e){

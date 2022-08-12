@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
@@ -104,18 +105,25 @@ public class Articles {
 
             //cont with instantiating new object 
             
-            a.id = a.getString(id);
-            a.published_on = a.getString(published_on);
-            a.title = a.getString(title);
-            a.url = a.getString(url);
-            a.imageurl = a.getString(imageurl);
-            a.body = a.getString(body);
-            a.tags = a.getString(tags);
-            a.categories = a.getString(categories);
+            a.id = o.getString(id);
+            a.published_on = o.getString(published_on);
+            a.title = o.getString(title);
+            a.url = o.getString(url);
+            a.imageurl = o.getString(imageurl);
+            a.body = o.getString(body);
+            a.tags = o.getString(tags);
+            a.categories = o.getString(categories);
         
 
 
             getArticlesList.add(a);
+
+
+            for (i=1; i>=1; i++){
+                getArticlesList.add(a);
+
+
+            }
 
         }
     }

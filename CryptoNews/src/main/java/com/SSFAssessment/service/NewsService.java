@@ -1,17 +1,16 @@
 package com.SSFAssessment.service;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.SSFAssessment.model.Articles;
 
 @Service
 public class NewsService {
@@ -19,20 +18,41 @@ public class NewsService {
 
     private static final String URL = "https://min-api.cryptocompare.com/data/v2/news";
 
-   @Value("${CRYPTO_API_KEY")
-    private String apiKey;
+   //@Value("${CRYPTO_API_KEY")
+    //private String apiKey;
 
 
-    //public Optional<articles> getArticles(String ){
+    //add arraylist into the get Articles??
+    public Optional <Articles> getArticles(){
     String apikey = System.getenv("CRYPTO_API_KEY");
     String cryptoUrl = UriComponentsBuilder.fromUriString(URL)
-        .queryParam("lang", "en")
-        .queryparam("api_key", "apiKey")
+        .queryParam("lang", "EN")
+        .queryParam("api_key", "apiKey")
         .toUriString();
 
+    logger.info("Check URL" + cryptoUrl);
 
     RestTemplate template = new RestTemplate();
-    ResponseEntity<String> response = null;
+    ResponseEntity<ArrayList> resp = null;
+    //should this be array 
+
+    try{
+        resp = template.getForEntity(cryptoUrl, ArrayList.class);
+        Articles a = Articles.create(resp.getBody());
+        return Optional.of(a);
+    } catch (Exception e){
+        logger.error(e.getMessage());
+        e.printStackTrace();
+    }
+
+    return Optional.empty();
+
+    }
+
+}
+    
+    
+
 
 
 
@@ -57,4 +77,3 @@ public class NewsService {
     */
 
     
-}
